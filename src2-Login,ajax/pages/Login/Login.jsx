@@ -34,14 +34,6 @@ export default class Login extends Component {
 				</header>
 				<section>
 					<span className="title">用户登录</span>
-					{/*
-						用户名/密码的的合法性要求
-							1). 必须输入
-							2). 必须大于等于4位
-							3). 必须小于等于12位
-							4). 必须是英文、数字、下划线组成
-						*/
-						}
 					<Form
 						className="login-form"
 						onFinish={this.onFinish} //表单提交的回调
@@ -49,7 +41,7 @@ export default class Login extends Component {
 						<Item
 							name="username"
 							rules={[
-								{required:true,message:'用户名必须输入！'}, //必填项
+								{required:true,message:'用户名必须输入！'},
 								{min:4,message:'用户名必须大于等于4位！'},
 								{max:12,message:'用户名必须小于等于12位！'},
 								{pattern:/^\w+$/,message:'用户名必须是英文、数字、下划线组成！'},
