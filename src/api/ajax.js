@@ -9,9 +9,11 @@
 import axios from 'axios' //axios核心库
 import qs from 'querystring' //用于将对象转为urlencoded字符串
 import {message as msg} from 'antd'
+import nprogress from "nprogress"//进度条
+import 'nprogress/nprogress.css'
 
 //配置请求的基础路径
-axios.defaults.baseURL = ''
+axios.defaults.baseURL = '/api'
 //配置超时时间
 axios.defaults.timeout = 2000
 
@@ -30,6 +32,7 @@ axios.interceptors.request.use((config)=>{
 axios.interceptors.response.use(
 	//成功的回调：返回的http状态码是2开头
 	response => {
+		nprogress.done()
 		return response.data
 	},
 	//失败的回调：1.返回的http状态码不是2开头；2.达到了超时时间；3.网络不通

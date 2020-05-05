@@ -1,17 +1,33 @@
 import React, { Component } from 'react'
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import {reqLogin} from '../../api'
-import logo from './images/logo.png'
+import {connect} from 'react-redux'
+import Check from '@/containers/Hoc/Check'
+import {saveUserInfo} from '@/redux/actions/login'
+import {reqLogin} from '@/api'
+import logo from '@/assets/images/logo.png'
 import './css/login.less'
 
 const {Item} = Form
 
-export default class Login extends Component {
+@connect(
+	state => ({isLogin:state.userInfo.isLogin}),//映射状态
+	{saveUserInfo} //映射操作状态的方法
+)
+@Check
+class Login extends Component {
 	//表单提交且验证通过的回调
 	onFinish = async values => {
-		let result = await reqLogin(values)
-		console.log(result);
+		let result = await reqLogin(values) //获取请求结果
+		const {status,data,msg} = result //获取请求结果中的：status,data,msg
+		if(status === 0){
+			//若登录成功
+			message.success('登录成功！',1) //提示
+			this.props.saveUserInfo(data) //向redux和localStorage中保存用户信息
+		}else{
+			//若登录失败
+			message.error(msg)
+		}
 	};
 
 	//密码的验证器（自定义校验）
@@ -25,7 +41,10 @@ export default class Login extends Component {
 		else return Promise.resolve()
 	}
 	
+	//this.props.history适用于在非render函数中跳转
+	//<Redirect>适用于在render函数中做跳转
 	render() {
+		//if(this.props.isLogin) return <Redirect to="/admin"/>
 		return (
 			<div className="login">
 				<header>
@@ -81,3 +100,6 @@ export default class Login extends Component {
 		)
 	}
 }
+
+export default Login
+

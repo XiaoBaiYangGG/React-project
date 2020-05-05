@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Admin from './pages/Admin/Admin'
-import Login from './pages/Login/Login'
+import Admin from './cotainers/Admin/Admin'
+import Login from './cotainers/Login/Login'
 import {Switch,Route,Redirect} from 'react-router-dom'
 
 export default class App extends Component {
