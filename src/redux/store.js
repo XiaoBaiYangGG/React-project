@@ -6,6 +6,6 @@ import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 //引入汇总之后的reducer
 import allReducer from './reducers'
-
+  
 //暴露store对象
 export default createStore(allReducer,composeWithDevTools(applyMiddleware(thunk)))

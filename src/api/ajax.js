@@ -12,7 +12,7 @@ import {message as msg} from 'antd'
 import nprogress from "nprogress"//进度条
 import 'nprogress/nprogress.css'
 
-//配置请求的基础路径
+//配置请求的基础路径  
 axios.defaults.baseURL = '/api'
 //配置超时时间
 axios.defaults.timeout = 2000

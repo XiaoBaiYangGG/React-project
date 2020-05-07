@@ -9,8 +9,8 @@ try {
 }
 let _token = localStorage.getItem('token')
 
-//定义一个初始化状态
-let initState = {
+//定义一个初始化
+let initState = { 
 	user: _user || {}, //用户信息
 	token: _token || '', //用户token
 	isLogin: _user && _token ? true : false //用户是否已经登录的标识

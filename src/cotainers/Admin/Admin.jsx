@@ -16,7 +16,7 @@ import Pie from './Pie/Pie'
 import './css/admin.less'
 
 const { Footer, Sider, Content } = Layout;
-
+  
 @connect(
 	state =>({ //映射状态
 		isLogin:state.userInfo.isLogin

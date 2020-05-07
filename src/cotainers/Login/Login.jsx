@@ -50,7 +50,7 @@ class Login extends Component {
 				<header>
 					<img src={logo} alt="logo"/>
 					<h1>商品管理系统</h1>
-				</header>
+				</header>   
 				<section>
 					<span className="title">用户登录</span>
 					{/*
